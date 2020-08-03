@@ -1,29 +1,21 @@
-import { useMyHook } from './'
-import { renderHook, act } from "@testing-library/react-hooks";
+import { usePostalJp } from './'
+import { renderHook, act } from '@testing-library/react-hooks'
 
 // mock timer using jest
-jest.useFakeTimers();
+jest.useFakeTimers()
 
-describe('useMyHook', () => {
+describe('usePostalJp', () => {
   it('updates every second', () => {
-    const { result } = renderHook(() => useMyHook());
+    const { result } = renderHook(() => usePostalJp('4560043'))
 
-    expect(result.current).toBe(0);
+    console.log(result.current)
 
     // Fast-forward 1sec
     act(() => {
-      jest.advanceTimersByTime(1000);
-    });
+      jest.advanceTimersByTime(5000)
+      if (!result.current.pending && !result.current.error) console.log(result.current)
+    })
 
-    // Check after total 1 sec
-    expect(result.current).toBe(1);
-
-    // Fast-forward 1 more sec
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
-
-    // Check after total 2 sec
-    expect(result.current).toBe(2);
+    console.log(result.current)
   })
 })

@@ -1,21 +1,9 @@
-import * as React from 'react'
+import { useFetch } from 'react-hooks-async'
 
-export const useMyHook = () => {
-  let [{
-    counter
-  }, setState] = React.useState({
-    counter: 0
-  })
+const API_ENDPOINT = 'https://madefor.github.io/postal-code-api/api/v1/'
 
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++
-      setState({counter})
-    }, 1000)
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [])
+const url = (postalCode) => `${API_ENDPOINT}${postalCode.slice(0, 3)}/${postalCode.slice(3, 7)}.json`
 
-  return counter
+export const usePostalJp = (code) => {
+  return useFetch(url(code))
 }
