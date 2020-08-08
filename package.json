@@ -87,7 +87,11 @@
     "react-hook",
     "react-hooks",
     "react hook",
-    "react hooks"
+    "react hooks",
+    "postal code",
+    "japanese",
+    "郵便番号",
+    "yubin"
   ],
   "dependencies": {
     "axios": "^0.19.2"
