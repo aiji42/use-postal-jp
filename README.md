@@ -14,6 +14,10 @@ npm install --save use-postal-jp
 yarn add use-postal-jp
 ```
 
+## DEMO
+
+https://aiji42.github.io/use-postal-jp/
+
 ## Usage
 
 ```jsx
