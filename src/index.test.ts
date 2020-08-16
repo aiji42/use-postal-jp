@@ -35,7 +35,7 @@ describe('usePostalJp', () => {
   afterEach(() => jest.restoreAllMocks())
 
   it('translates correctly', async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve(mockData))
+    (axios.get as jest.Mock).mockImplementationOnce(() => Promise.resolve(mockData))
     const { result } = renderHook(() => usePostalJp())
 
     await act(async () => {
@@ -52,7 +52,7 @@ describe('usePostalJp', () => {
   })
 
   it('is rightly sanitized', async () => {
-    axios.get.mockImplementation(() => Promise.resolve(mockData))
+    (axios.get as jest.Mock).mockImplementation(() => Promise.resolve(mockData))
     const { result } = renderHook(() => usePostalJp())
 
     await act(async () => {
@@ -77,7 +77,7 @@ describe('usePostalJp', () => {
   })
 
   it('is able to hundle errors', async () => {
-    axios.get.mockImplementation(() => Promise.reject(new Error('File not found')))
+    (axios.get as jest.Mock).mockImplementation(() => Promise.reject(new Error('File not found')))
     const { result } = renderHook(() => usePostalJp())
 
     expect(result.current.error).toBe(null)
@@ -85,11 +85,11 @@ describe('usePostalJp', () => {
     await act(async () => {
       result.current.setPostalCode('100000')
     })
-    expect(result.current.error.message).toBe('Incorrect postcode.')
+    expect(result.current.error?.message).toBe('Incorrect postcode.')
 
     await act(async () => {
       result.current.setPostalCode('1000001')
     })
-    expect(result.current.error.message).toBe('File not found')
+    expect(result.current.error?.message).toBe('File not found')
   })
 })

@@ -1,18 +1,27 @@
 import endpoint from './endpoint'
 import { useState, useEffect, useCallback, useRef } from 'react'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
-const sanitize = (code) => code.replace(/[^0-9０-９]/g, '').replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0)).slice(0, 7)
+const sanitize = (code: string | number) => `${code}`.replace(/[^0-9０-９]/g, '').replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xFEE0)).slice(0, 7)
 
-const url = (postalCode) => `${endpoint.api}${postalCode.slice(0, 3)}/${postalCode.slice(3, 7)}.json`
+const url = (postalCode: string) => `${endpoint.api}${postalCode.slice(0, 3)}/${postalCode.slice(3, 7)}.json`
+
+type Address = {
+  prefectureCode?: string
+  prefecture?: string
+  address1?: string
+  address2?: string
+  address3?: string
+  address4?: string
+}
 
 export const usePostalJp = () => {
-  const [postalCode, setPostalCode] = useState('')
-  const [sanitizedCode, setSanitizedCode] = useState('')
-  const [error, setError] = useState(null)
-  const [pending, setPending] = useState(false)
-  const [response, setResponse] = useState(null)
-  const [address, setAddress] = useState({})
+  const [postalCode, setPostalCode] = useState<string|number>('')
+  const [sanitizedCode, setSanitizedCode] = useState<string>('')
+  const [error, setError] = useState<Error|null>(null)
+  const [pending, setPending] = useState<boolean>(false)
+  const [response, setResponse] = useState<AxiosResponse<{}>|null>(null)
+  const [address, setAddress] = useState<Address>({})
   const resetState = useCallback(() => {
     setError(null)
     setPending(false)
@@ -21,7 +30,7 @@ export const usePostalJp = () => {
   }, [])
   const mounted = useRef(true)
 
-  const getAddress = useCallback(async (code) => {
+  const getAddress = useCallback(async (code: string) => {
     try {
       resetState()
       if (code.length < 7) throw new Error('Incorrect postcode.')
