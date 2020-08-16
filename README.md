@@ -2,7 +2,7 @@
 
 > 郵便番号を住所に変換するReactカスタムフックです。住所データを内部に持たず、APIで住所変換するため軽量なパッケージになっています。そのため、クライアントサイド向きです。
 
-[![NPM](https://img.shields.io/npm/v/use-postal-jp.svg)](https://www.npmjs.com/package/use-postal-jp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/aiji42/use-postal-jp.svg?branch=master)](https://travis-ci.org/aiji42/use-postal-jp)
+[![NPM](https://img.shields.io/npm/v/use-postal-jp.svg)](https://www.npmjs.com/package/use-postal-jp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/aiji42/use-postal-jp.svg?branch=master)](https://travis-ci.org/aiji42/use-postal-jp) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
 ## Install
 
@@ -58,26 +58,25 @@ const { address, error, sanitizedCode, response, pending, setPostalCode } = useP
 const { prefectureCode, prefecture, address1, address2, address3, address4 } = address
 ```
 
-- setPostalCode
+- __setPostalCode:__ `SetStateAction<string|number>`
     - `setPostalCode('1000001')` のように郵便番号を渡すと、APIにより住所変換がなされる
         - ハイフンあり('100-0001')、全角('１００ー０００１') でも変換可能
-- pending
+- __pending:__ `boolean`
     - API通信中は `true` になる
-- error
+- __error:__ `Error|null`
     - 郵便番号の桁不足や、存在しない郵便番号でAPIが叩かれるなどしたときに、エラーオブジェクトが返却される
     - 正常であれば `null`
-- sanitizedCode
+- __sanitizedCode:__ `string`
     - 全角=>半角、数字以外の文字を除いた郵便番号が返却される
         - ex. １００ー０００１ => 1000001
-- address
-    - 住所オブジェクト
-    - prefectureCode: 都道府県コード
-    - prefecture: 都道府県
-    - address1: 市区町村
-    - address2: 市区町村配下
-    - address3: 更に詳細情報
-    - address4: 建物名など
-- response
+- __address:__ `Address`
+    - `prefectureCode?: string` 都道府県コード
+    - `prefecture?: string` 都道府県
+    - `address1?: string` 市区町村
+    - `address2?: string` 市区町村配下
+    - `address3?: stging` 更に詳細情報
+    - `address4?: string` 建物名など
+- __response:__ `AxiosResponse<{}>|null`
     - 住所検索APIアクセスに対してのレスポンスオブジェクト
         - 住所のローマ字表記を使用する際にはこちらを参照してください
 
