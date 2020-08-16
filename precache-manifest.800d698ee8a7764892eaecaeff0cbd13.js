@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cddbb13ea4804ee10d90b49c4e56ec5a",
+    "revision": "c83f5146e5d20bcd2314d27e953aa842",
     "url": "/use-postal-jp/index.html"
   },
   {
-    "revision": "3e87287c5e5f43ac06bc",
+    "revision": "f41c6afbbbd3dfd37f8b",
     "url": "/use-postal-jp/static/css/main.2c6a48fe.chunk.css"
   },
   {
-    "revision": "d6b9d8c929503b8c0ef9",
-    "url": "/use-postal-jp/static/js/2.c04b5a5f.chunk.js"
+    "revision": "996128bb4c3f57fee9cd",
+    "url": "/use-postal-jp/static/js/2.55f8f06f.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/use-postal-jp/static/js/2.c04b5a5f.chunk.js.LICENSE.txt"
+    "url": "/use-postal-jp/static/js/2.55f8f06f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3e87287c5e5f43ac06bc",
-    "url": "/use-postal-jp/static/js/main.e219ce19.chunk.js"
+    "revision": "f41c6afbbbd3dfd37f8b",
+    "url": "/use-postal-jp/static/js/main.cf3f3f74.chunk.js"
   },
   {
     "revision": "9de4dedb211d9ed6a1de",
