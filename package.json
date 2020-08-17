@@ -1,12 +1,16 @@
 {
   "name": "use-postal-jp",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "郵便番号を住所に変換するReactカスタムフックです。住所データを内部に持たず、APIで住所変換するため軽量なパッケージになっています。そのため、クライアントサイド向きです。",
   "author": "aiji42",
   "license": "MIT",
   "repository": "aiji42/use-postal-jp",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
