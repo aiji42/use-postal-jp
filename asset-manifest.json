@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/use-postal-jp/static/css/main.2c6a48fe.chunk.css",
-    "main.js": "/use-postal-jp/static/js/main.cf3f3f74.chunk.js",
-    "main.js.map": "/use-postal-jp/static/js/main.cf3f3f74.chunk.js.map",
+    "main.js": "/use-postal-jp/static/js/main.df595dfb.chunk.js",
+    "main.js.map": "/use-postal-jp/static/js/main.df595dfb.chunk.js.map",
     "runtime-main.js": "/use-postal-jp/static/js/runtime-main.62fb7b5b.js",
     "runtime-main.js.map": "/use-postal-jp/static/js/runtime-main.62fb7b5b.js.map",
-    "static/js/2.55f8f06f.chunk.js": "/use-postal-jp/static/js/2.55f8f06f.chunk.js",
-    "static/js/2.55f8f06f.chunk.js.map": "/use-postal-jp/static/js/2.55f8f06f.chunk.js.map",
+    "static/js/2.76f27c8d.chunk.js": "/use-postal-jp/static/js/2.76f27c8d.chunk.js",
+    "static/js/2.76f27c8d.chunk.js.map": "/use-postal-jp/static/js/2.76f27c8d.chunk.js.map",
     "index.html": "/use-postal-jp/index.html",
-    "precache-manifest.800d698ee8a7764892eaecaeff0cbd13.js": "/use-postal-jp/precache-manifest.800d698ee8a7764892eaecaeff0cbd13.js",
+    "precache-manifest.0013d5f225f8cb7dc3d50f90e0b19ddb.js": "/use-postal-jp/precache-manifest.0013d5f225f8cb7dc3d50f90e0b19ddb.js",
     "service-worker.js": "/use-postal-jp/service-worker.js",
     "static/css/main.2c6a48fe.chunk.css.map": "/use-postal-jp/static/css/main.2c6a48fe.chunk.css.map",
-    "static/js/2.55f8f06f.chunk.js.LICENSE.txt": "/use-postal-jp/static/js/2.55f8f06f.chunk.js.LICENSE.txt"
+    "static/js/2.76f27c8d.chunk.js.LICENSE.txt": "/use-postal-jp/static/js/2.76f27c8d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.62fb7b5b.js",
-    "static/js/2.55f8f06f.chunk.js",
+    "static/js/2.76f27c8d.chunk.js",
     "static/css/main.2c6a48fe.chunk.css",
-    "static/js/main.cf3f3f74.chunk.js"
+    "static/js/main.df595dfb.chunk.js"
   ]
 }
