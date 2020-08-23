@@ -31,10 +31,10 @@ export const usePostalJp = () => {
   const mounted = useRef(true)
 
   const getAddress = useCallback(async (code: string) => {
-    setPending(true)
     try {
       resetState()
       if (code.length < 7) throw new Error('Incorrect postcode.')
+      setPending(true)
       const res = await axios.get(url(code))
       const { data: { data: [{ prefcode: prefectureCode, ja }] } } = res
       setAddress({ prefectureCode, ...ja })
