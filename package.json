@@ -5,8 +5,8 @@
   "author": "aiji42",
   "license": "MIT",
   "repository": "aiji42/use-postal-jp",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -31,7 +31,7 @@
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.4",
     "@babel/runtime": "^7.11.2",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-json": "^4.1.0",
@@ -40,7 +40,7 @@
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^26.0.10",
     "@types/react": "^16.9.46",
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
     "cross-env": "^7.0.0",
     "eslint-config-standard": "^14.0.0",
     "eslint-config-standard-react": "^9.0.0",
@@ -48,7 +48,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "eslint-plugin-standard": "^4.0.0",
     "gh-pages": "^3.0.0",
     "husky": "^4.2.5",
@@ -56,10 +56,10 @@
     "react": "^16.9.0",
     "react-scripts": "^3.4.3",
     "react-test-renderer": "^16.9.0",
-    "rollup": "^2.26.2",
+    "rollup": "^2.26.5",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-typescript2": "^0.27.2",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   },
   "husky": {
     "hooks": {
@@ -84,6 +84,6 @@
     "yubin"
   ],
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.20.0"
   }
 }

@@ -13,14 +13,12 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      exports: 'named',
-      sourcemap: true
+      exports: 'named'
     },
     {
       file: pkg.module,
-      format: 'es',
-      exports: 'named',
-      sourcemap: true
+      format: 'esm',
+      exports: 'named'
     }
   ],
   plugins: [
