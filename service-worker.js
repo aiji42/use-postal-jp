@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/use-postal-jp/precache-manifest.0013d5f225f8cb7dc3d50f90e0b19ddb.js"
+  "/use-postal-jp/precache-manifest.3cafda061d630a199aeb2a28fe546045.js"
 );
 
 self.addEventListener('message', (event) => {

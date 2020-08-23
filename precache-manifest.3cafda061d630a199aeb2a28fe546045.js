@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7773189fb310265bc60b6e9ece004c72",
+    "revision": "be0dd6c599f4a823d5cd309170438aa6",
     "url": "/use-postal-jp/index.html"
   },
   {
-    "revision": "1360515c3c1087b3dd5f",
+    "revision": "fd59e33cf5a9df5962b3",
     "url": "/use-postal-jp/static/css/main.2c6a48fe.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/use-postal-jp/static/js/2.76f27c8d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1360515c3c1087b3dd5f",
-    "url": "/use-postal-jp/static/js/main.df595dfb.chunk.js"
+    "revision": "fd59e33cf5a9df5962b3",
+    "url": "/use-postal-jp/static/js/main.76ce58f5.chunk.js"
   },
   {
     "revision": "9de4dedb211d9ed6a1de",
