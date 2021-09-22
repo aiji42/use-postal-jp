@@ -1,42 +1,26 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
+import { usePostalJp } from '../lib/main'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [value, setValue] = useState('')
+  const [address, , error] = usePostalJp(value, value.length === 7)
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
+        <input
+          type="text"
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Plz input postal code!"
+        />
+        <p>prefectureCode: {address?.prefectureCode}</p>
+        <p>prefecture: {address?.prefecture}</p>
+        <p>address1: {address?.address1}</p>
+        <p>address2: {address?.address2}</p>
+        <p>address3: {address?.address3}</p>
+        <p>address4: {address?.address4}</p>
+        <p>error: {error?.message}</p>
       </header>
     </div>
   )
