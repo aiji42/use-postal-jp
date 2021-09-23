@@ -1,71 +1,33 @@
-import endpoint from './endpoint'
 import { useState, useEffect } from 'react'
+import {
+  Address,
+  ParseResponse,
+  postalHandler,
+  sanitize,
+  parseResponse as _parseResponse
+} from './utils'
+export { postalHandler } from './utils'
 
-const sanitize = (code: string | number) =>
-  `${code}`
-    .replace(/[^0-9０-９]/g, '')
-    .replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0))
-    .slice(0, 7)
-
-const url = (postalCode: string) =>
-  `${endpoint.api}${postalCode.slice(0, 3)}/${postalCode.slice(3, 7)}.json`
-
-type APIResponse = {
-  code: string
-  data: Array<{
-    prefcode: string
-    ja: {
-      prefecture: string
-      address1: string
-      address2: string
-      address3: string
-      address4: string
-    }
-  }>
-}
-
-const parseResponse = (res: APIResponse): Address => {
-  const {
-    data: [{ prefcode, ja: data }]
-  } = res
-  return {
-    prefectureCode: prefcode,
-    prefecture: data.prefecture,
-    address1: data.address1,
-    address2: data.address2,
-    address3: data.address3,
-    address4: data.address4
-  }
-}
-
-type Address = {
-  prefectureCode: string
-  prefecture: string
-  address1: string
-  address2: string
-  address3: string
-  address4: string
-}
-
-type UsePostalJpResultAddress = Address | null
-
-type LoadingState = boolean
-
-type UsePostalJp = (
+export const usePostalJp = <T extends Record<string, unknown> = Address, R>(
   postalCode: string,
-  ready?: boolean
-) => [UsePostalJpResultAddress, LoadingState, Error | null]
-
-export const usePostalJp: UsePostalJp = (postalCode, ready = true) => {
+  ready = true,
+  option?: {
+    makeRequestURL?: (code: [string, string]) => string
+    parseResponse?: ParseResponse<T, R>
+  }
+): [T | null, boolean, Error | null] => {
+  const makeRequestURL = option?.makeRequestURL ?? postalHandler.makeRequestURL
+  const parseResponse: ParseResponse<T, R> =
+    option?.parseResponse ?? _parseResponse
   const [error, setError] = useState<Error | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
-  const [address, setAddress] = useState<UsePostalJpResultAddress>(null)
+  const [address, setAddress] = useState<T | null>(null)
 
   useEffect(() => {
     let mounted = true
     if (!ready) return
     setLoading(true)
-    fetch(url(sanitize(postalCode)))
+    fetch(makeRequestURL(sanitize(postalCode)))
       .then((res) => {
         if (!res.ok) throw new Error('Bad request')
         return res.json()
