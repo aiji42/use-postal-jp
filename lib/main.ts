@@ -6,22 +6,40 @@ import {
   sanitize,
   parseResponse as _parseResponse
 } from './utils'
+import { APIResponse } from './endpoint'
 export { postalHandler } from './utils'
 
-export const usePostalJp = <T extends Record<string, unknown> = Address, R>(
+const a = (res: APIResponse): Address => {
+  const {
+    data: [{ prefcode, ja: data }]
+  } = res
+  return {
+    prefectureCode: prefcode,
+    prefecture: data.prefecture,
+    address1: data.address1,
+    address2: data.address2,
+    address3: data.address3,
+    address4: data.address4
+  }
+}
+
+type AddressOrCustom<T> = T extends never | Address ? Address : T
+
+export const usePostalJp = <T = Address, R = APIResponse>(
   postalCode: string,
   ready = true,
   option?: {
     makeRequestURL?: (code: [string, string]) => string
-    parseResponse?: ParseResponse<T, R>
+    parseResponse?: (res: R) => T
   }
-): [T | null, boolean, Error | null] => {
+): [AddressOrCustom<T> | null, boolean, Error | null] => {
   const makeRequestURL = option?.makeRequestURL ?? postalHandler.makeRequestURL
-  const parseResponse: ParseResponse<T, R> =
-    option?.parseResponse ?? _parseResponse
+  const parseResponse = <ParseResponse<AddressOrCustom<T>, R>>(
+    (option?.parseResponse ?? _parseResponse)
+  )
   const [error, setError] = useState<Error | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
-  const [address, setAddress] = useState<T | null>(null)
+  const [address, setAddress] = useState<AddressOrCustom<T> | null>(null)
 
   useEffect(() => {
     let mounted = true
