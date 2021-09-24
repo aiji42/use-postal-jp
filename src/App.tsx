@@ -4,43 +4,38 @@ import { usePostalJp } from '../lib/main'
 
 function App() {
   const [value, setValue] = useState('')
-  const [address, loading, error] = usePostalJp(value, value.length >= 7, {
-    url: ([first, second]) =>
-      `https://www.lifedot.jp/api/postal_codes?postal_code=${first}-${second}`,
-    parse: (
-      res: {
-        prefecture_code: string
-        prefecture_name: string
-        city_name: string
-        town_name: string
-      }[]
-    ) => ({
-      prefectureCode: res[0].prefecture_code,
-      prefecture: res[0].prefecture_name,
-      address1: res[0].city_name,
-      address2: res[0].town_name,
-      address3: '',
-      address4: ''
-    })
-  })
+  const [address, loading, error] = usePostalJp(value, value.length >= 7)
 
   return (
     <div className="App">
-      <header className="App-header">
-        <input
-          type="text"
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Plz input postal code!"
-        />
-        <p>prefectureCode: {address?.prefectureCode}</p>
-        <p>prefecture: {address?.prefecture}</p>
-        <p>address1: {address?.address1}</p>
-        <p>address2: {address?.address2}</p>
-        <p>address3: {address?.address3}</p>
-        <p>address4: {address?.address4}</p>
-        <p>error: {error?.message}</p>
-        <p>loading: {`${loading}`}</p>
-      </header>
+      <main>
+        <div className="address">
+          <input
+            type="text"
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="input Japanese postal code"
+          />
+          <dl>
+            <dt>Loading Status</dt>
+            <dd>{loading ? 'now loading' : 'not loading'}</dd>
+            <dt>Prefecture</dt>
+            <dd>
+              {address?.prefecture ?? '-'}
+              {address?.prefectureCode ? ` (${address?.prefectureCode})` : ''}
+            </dd>
+            <dt>Address1 (city)</dt>
+            <dd>{address?.address1 ?? '-'}</dd>
+            <dt>Address2 (town)</dt>
+            <dd>{address?.address2 ?? '-'}</dd>
+            <dt>Address3</dt>
+            <dd>{address?.address3 ?? '-'}</dd>
+            <dt>Address4</dt>
+            <dd>{address?.address4 ?? '-'}</dd>
+            <dt>Error</dt>
+            <dd>{error?.message ?? '-'}</dd>
+          </dl>
+        </div>
+      </main>
     </div>
   )
 }
