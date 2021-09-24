@@ -2,40 +2,25 @@ import { useState, useEffect } from 'react'
 import {
   Address,
   ParseResponse,
-  postalHandler,
-  sanitize,
-  parseResponse as _parseResponse
+  makeRequestURL,
+  parseResponse,
+  sanitize
 } from './utils'
 import { APIResponse } from './endpoint'
-export { postalHandler } from './utils'
-
-const a = (res: APIResponse): Address => {
-  const {
-    data: [{ prefcode, ja: data }]
-  } = res
-  return {
-    prefectureCode: prefcode,
-    prefecture: data.prefecture,
-    address1: data.address1,
-    address2: data.address2,
-    address3: data.address3,
-    address4: data.address4
-  }
-}
 
 type AddressOrCustom<T> = T extends never | Address ? Address : T
 
 export const usePostalJp = <T = Address, R = APIResponse>(
   postalCode: string,
-  ready = true,
+  ready: boolean,
   option?: {
-    makeRequestURL?: (code: [string, string]) => string
-    parseResponse?: (res: R) => T
+    url?: (code: [string, string]) => string
+    parse?: (res: R) => T
   }
 ): [AddressOrCustom<T> | null, boolean, Error | null] => {
-  const makeRequestURL = option?.makeRequestURL ?? postalHandler.makeRequestURL
-  const parseResponse = <ParseResponse<AddressOrCustom<T>, R>>(
-    (option?.parseResponse ?? _parseResponse)
+  const url = option?.url ?? makeRequestURL
+  const parse = <ParseResponse<AddressOrCustom<T>, R>>(
+    (option?.parse ?? parseResponse)
   )
   const [error, setError] = useState<Error | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -45,13 +30,13 @@ export const usePostalJp = <T = Address, R = APIResponse>(
     let mounted = true
     if (!ready) return
     setLoading(true)
-    fetch(makeRequestURL(sanitize(postalCode)))
+    fetch(url(sanitize(postalCode)))
       .then((res) => {
         if (!res.ok) throw new Error('Bad request')
         return res.json()
       })
       .then((data) => {
-        mounted && setAddress(parseResponse(data))
+        mounted && setAddress(parse(data))
         mounted && setError(null)
       })
       .catch((e) => {

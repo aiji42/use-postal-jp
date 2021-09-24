@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
 import './App.css'
-import { usePostalJp, postalHandler } from '../lib/main'
-
-postalHandler.makeRequestURL = ([first, second]) =>
-  `https://www.lifedot.jp/api/postal_codes?postal_code=${first}-${second}`
-
-postalHandler.parseResponse = (res) => ({
-  prefectureCode: res[0].prefecture_code,
-  prefecture: res[0].prefecture_name,
-  address1: res[0].city_name,
-  address2: res[0].town_name,
-  address3: '',
-  address4: ''
-})
+import { usePostalJp } from '../lib/main'
 
 function App() {
   const [value, setValue] = useState('')
-  const [address, loading, error] = usePostalJp(value, value.length >= 7)
+  const [address, loading, error] = usePostalJp(value, value.length >= 7, {
+    url: ([first, second]) =>
+      `https://www.lifedot.jp/api/postal_codes?postal_code=${first}-${second}`,
+    parse: (
+      res: {
+        prefecture_code: string
+        prefecture_name: string
+        city_name: string
+        town_name: string
+      }[]
+    ) => ({
+      prefectureCode: res[0].prefecture_code,
+      prefecture: res[0].prefecture_name,
+      address1: res[0].city_name,
+      address2: res[0].town_name,
+      address3: '',
+      address4: ''
+    })
+  })
 
   return (
     <div className="App">
