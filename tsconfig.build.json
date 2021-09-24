@@ -8,5 +8,6 @@
     "declaration": true,
     "declarationDir": "dist"
   },
-  "include": ["./lib"]
+  "include": ["./lib"],
+  "exclude": ["node_modules", "./lib/*.spec.ts"]
 }
