@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+}
+
+main {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+input {
+  font-size: 1.5rem;
+  width: 90%;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.address {
+  max-width: 500px;
+}
+
+dl {
+  display:flex;
+  flex-wrap: wrap;
+}
+dt {
+  background: #495368;
+  width: 30%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+dd {
+  padding: 10px;
+  margin: 0;
+  width: 70%;
+  background: #6c7687;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 320px) {
+  dl {
+    flex-flow: column nowrap;
+  }
+  dt,
+  dd {
+    width: 100%;
+  }
+  dd {
+    border-left: none;
+  }
+}
