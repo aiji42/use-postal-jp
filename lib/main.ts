@@ -19,9 +19,10 @@ export const usePostalJp = <T = Address, R = APIResponse>(
   }
 ): [AddressOrCustom<T> | null, boolean, Error | null] => {
   const url = option?.url ?? makeRequestURL
-  const parse = <ParseResponse<AddressOrCustom<T>, R>>(
-    (option?.parse ?? parseResponse)
-  )
+  const parse = (option?.parse ?? parseResponse) as ParseResponse<
+    AddressOrCustom<T>,
+    R
+  >
   const [error, setError] = useState<Error | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [address, setAddress] = useState<AddressOrCustom<T> | null>(null)
