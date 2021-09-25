@@ -9,6 +9,9 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'lib/main.ts'),
       name: 'usePostalJp',
       fileName: (format) => `main.${format}.js`
+    },
+    rollupOptions: {
+      external: ['react']
     }
   },
   plugins: [reactRefresh()]
