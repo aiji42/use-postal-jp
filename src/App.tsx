@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, VFC } from 'react'
 import './App.css'
 import { usePostalJp } from '../lib/main'
 
-function App() {
+const App: VFC = () => {
   const [value, setValue] = useState('')
   const [address, loading, error] = usePostalJp(value, value.length >= 7)
 
