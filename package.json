@@ -1,6 +1,6 @@
 {
   "name": "use-postal-jp",
-  "version": "1.1.4",
+  "version": "0.0.0-development",
   "description": "郵便番号を住所に変換するReactカスタムフックです。住所データを内部に持たず、APIで住所変換するため軽量なパッケージになっています。そのため、クライアントサイド向きです。",
   "author": "aiji42",
   "license": "MIT",
@@ -22,7 +22,8 @@
     "build": "tsc --skipLibCheck && vite build && tsc -p ./tsconfig.build.json",
     "serve": "vite preview",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "react": ">=16.9.0"
@@ -31,6 +32,8 @@
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-typescript": "^7.15.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.1",
@@ -58,6 +61,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
+    "semantic-release": "^18.0.0",
+    "semantic-release-cli": "^5.4.4",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3",
     "vite": "^2.5.10"
