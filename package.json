@@ -22,6 +22,7 @@
     "build": "tsc --skipLibCheck && vite build && tsc -p ./tsconfig.build.json",
     "serve": "vite preview",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "prepare": "husky install",
     "semantic-release": "semantic-release"
   },
