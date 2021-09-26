@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "dist"
+  },
+  "include": ["./lib"],
+  "exclude": ["node_modules", "./lib/*.spec.ts"]
+}

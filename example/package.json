@@ -1,26 +1,21 @@
 {
-  "name": "use-postal-jp-example",
-  "homepage": "https://aiji42.github.io/use-postal-jp",
+  "name": "example",
   "version": "0.0.0",
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "prop-types": "^15.6.2",
-    "react": "link:../node_modules/react",
-    "react-dom": "^16.9.0",
-    "react-scripts": "^3.0.1",
-    "use-postal-jp": "link:.."
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "use-postal-jp": "^2.0.0-beta.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^1.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.5.4"
+  }
 }
