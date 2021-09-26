@@ -30,8 +30,7 @@ const App = () => {
 
   return (
     <div>
-      <input type='text' onChange={(e) => setValue(e.target.value)} placeholder='Plz input postal code!' />
-      <p>sanitizedCode: {sanitizedCode}</p>
+      <input type='text' onChange={(e) => setValue(e.target.value)} />
       {!loading &&
         <>
           <p>prefectureCode: {address.prefectureCode && address.prefectureCode}</p>
