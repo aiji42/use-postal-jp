@@ -16,7 +16,7 @@ yarn add use-postal-jp
 
 ## DEMO
 
-https://aiji42.github.io/use-postal-jp/
+https://use-postal-jp.vercel.app/
 
 ## Usage
 
