@@ -2,7 +2,7 @@
 
 郵便番号を住所に変換するReactカスタムフックです。住所データを内部に持たず、APIで住所変換するため軽量なパッケージになっています。
 
-[![NPM](https://img.shields.io/npm/v/use-postal-jp.svg)](https://www.npmjs.com/package/use-postal-jp) [![codecov](https://codecov.io/gh/aiji42/use-postal-jp/branch/master/graph/badge.svg?token=CODQMUB6KL)](https://codecov.io/gh/aiji42/use-postal-jp)
+[![NPM](https://img.shields.io/npm/v/use-postal-jp.svg)](https://www.npmjs.com/package/use-postal-jp) [![codecov](https://codecov.io/gh/aiji42/use-postal-jp/branch/main/graph/badge.svg?token=CODQMUB6KL)](https://codecov.io/gh/aiji42/use-postal-jp)
 
 ## Install
 
